@@ -1,11 +1,17 @@
+<% if @content.errors.any? %>
+  Error: <%= @content.errors.full_messages.join(', ' ) %>
+<% end %>
+<br>
 <%= form_with(model: @content, local: true) do |form| %>
   <div class="field">
     <%= form.label :title %>
+    <br>
     <%= form.text_field :title %>
   </div>
 
   <div class="field">
     <%= form.label :description %>
+    <br>
     <%= form.text_field :description %>
   </div>
 
