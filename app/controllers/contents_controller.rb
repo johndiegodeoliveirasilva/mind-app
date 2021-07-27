@@ -1,6 +1,6 @@
 class ContentsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_content, only: [:edit, :show, :update]
+  before_action :set_content, only: [:edit, :show, :update, :destroy]
 
   def index
     @contents = current_user.contents
@@ -30,6 +30,13 @@ class ContentsController < ApplicationController
       render :edit
     end
   end
+
+  def destroy
+    @content.destroy
+
+    redirect_to contents_path, notice: 'Content successfully updated! '
+  end
+
   private
 
   def content_params
